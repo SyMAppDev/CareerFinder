@@ -18,7 +18,7 @@ function Button({ title, onPress, style, isGoogle}: ButtonProps) {
       onPress={onPress}
       style={[styles.container, style, , isGoogle && styles.googleButton]}
     >
-      {isGoogle && <Image style={styles.google} source={require('../assets/images/google.png')}/>}
+      {isGoogle && <Image source={require('../assets/images/google.png')}/>}
       <Text style={[styles.title, customStyle && styles.customTitle]}>{title}</Text>
     </TouchableOpacity>
   );
@@ -52,7 +52,5 @@ const styles = StyleSheet.create({
    backgroundColor:colors.lightGrey,
    borderWidth:0,
   },
-  google:{
-    marginRight:8
-  }
+  
 });

@@ -25,7 +25,7 @@ function SignInScreen() {
         <Button  title="Entrar" onPress={()=>{}}/>
         <Button style={styles.CreateAccountButton} title="Crear Cuenta" onPress={()=>{}}/>
         <Divider title="O continuar con"/>
-        <Button style={styles.CreateAccountButton} title="Google" isGoogle onPress={()=>{}}/>
+        <Button style={styles.CreateAccountButton} title="oogle" isGoogle onPress={()=>{}}/>
       </View>
     </View>
   )
