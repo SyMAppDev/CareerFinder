@@ -9,6 +9,8 @@ import React from 'react';
 import {
   SafeAreaView,
 
+  StatusBar,
+
   StyleSheet,
 
 } from 'react-native';
@@ -23,6 +25,8 @@ function App(): React.JSX.Element {
 
   return (
     <SafeAreaView style={backgroundStyle}>
+      <StatusBar backgroundColor={colors.white}
+       barStyle="dark-content" />
       <SignInScreen/>
     </SafeAreaView>
   );

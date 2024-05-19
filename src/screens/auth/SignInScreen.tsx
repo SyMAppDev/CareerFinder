@@ -35,8 +35,7 @@ export default React.memo(SignInScreen);
 
 const styles = StyleSheet.create({
   Container:{
-    borderColor:colors.black,
-    borderWidth:1,
+    
     height:'100%'
   },
   Logo:{
