@@ -1,31 +1,68 @@
-import React from "react";
-import { Image, StyleSheet, Text, View } from "react-native";
+import React, { useState } from "react";
+import { Image, LayoutAnimation, Pressable, StyleSheet, Text, UIManager, View } from "react-native";
 import Button from "../../components/Button";
 import { colors } from '../../utils/colors';
 import Input from "../../components/Input";
 import Divider from "../../components/Divider";
 
+UIManager.setLayoutAnimationEnabledExperimental &&
+  UIManager.setLayoutAnimationEnabledExperimental(true);
 
 function SignInScreen() {
 
+  const [isSignUp, setIsSignUp] = useState(false);
+
+  function togleView() {
+    LayoutAnimation.configureNext({
+      duration: 150,
+      create: 
+      {
+         type: LayoutAnimation.Types.easeInEaseOut,
+         property: LayoutAnimation.Properties.opacity,
+      },
+      update: 
+      {
+         type: LayoutAnimation.Types.easeInEaseOut,
+      }
+     }); // Add animation configuration
+    setIsSignUp(!isSignUp);
+  }
+
   return(
     <View style={styles.Container}>
-      <Image style={styles.Logo}  source={require("../../assets/images/LazyBull.png")}/>
-      <View style={styles.FormContainer}>
-  
+      {!isSignUp && <Image style={styles.Logo}  source={require("../../assets/images/LazyBull.png")}/>}
 
-        <Text style={styles.Title}>Iniciar Sesion</Text>
-        <Text style={styles.Subtitle}>Ingresa los datos para el inicio de sesion</Text>
+  
+      <View style={[styles.FormContainer, isSignUp && {marginTop:128}]}>
+
+        {isSignUp ? <Text style={styles.Title}>Crea tu cuenta</Text> : <Text style={styles.Title}>Iniciar Sesion</Text>}
+
+        {isSignUp ? <Text style={styles.Subtitle}>Ingresa los datos necesarios para tu cuenta</Text> : <Text style={styles.Subtitle}>Ingresa los datos para el inicio de sesion</Text>}
    
         <View>
 
         <Input isError={false} placeholder="email@domain.com"/>
         <Input isError={false} placeholder="contraseña" isPassword={true}/>
+        {isSignUp && <>
+          <Input isError={false} placeholder="contraseña" isPassword={true}/>
+          <Input isError={false} placeholder="nombre"/>
+          <Input isError={false} placeholder="apellido"/>
+        </>                
+        }
         </View>
-        <Button  title="Entrar" onPress={()=>{}}/>
-        <Button style={styles.CreateAccountButton} title="Crear Cuenta" onPress={()=>{}}/>
+        {isSignUp ? <Button  title="Crear Cuenta" onPress={()=>{}}/> : <Button  title="Entrar" onPress={()=>{}}/>}
+        
+        {isSignUp ? 
+        <Pressable style={styles.back} onPress={togleView}>
+        <Divider title="Volver"/>
+      </Pressable>
+       : <Button style={styles.CreateAccountButton} title="Crear Cuenta" onPress={togleView}/>
+      }
+
+        {!isSignUp && <>
         <Divider title="O continuar con"/>
         <Button style={styles.CreateAccountButton} title="oogle" isGoogle onPress={()=>{}}/>
+        </>}
       </View>
     </View>
   )
@@ -54,7 +91,7 @@ const styles = StyleSheet.create({
   Title:{
     fontWeight:'600',
     color: colors.black,
-    fontSize: 18
+    fontSize: 24
   },
   Subtitle:{
     fontSize: 18,
@@ -66,6 +103,9 @@ const styles = StyleSheet.create({
     borderColor: colors.black,
     color: colors.black
   },
+  back:{
+    width:'100%'
+  }
   
 
 })
