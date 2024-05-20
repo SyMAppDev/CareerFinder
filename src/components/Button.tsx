@@ -36,6 +36,14 @@ const styles = StyleSheet.create({
     marginVertical:8,
     flexDirection:'row',
     justifyContent:'center',
+    shadowColor: "#000000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.17,
+    shadowRadius: 2.54,
+    elevation: 5,
     
   },
   title: {

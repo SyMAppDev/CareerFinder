@@ -83,7 +83,7 @@ export const styles = StyleSheet.create({
     },
     shadowOpacity: 0.17,
     shadowRadius: 2.54,
-    elevation: 3,
+    elevation: 5,
   },
   input: {
     paddingHorizontal: 16,
