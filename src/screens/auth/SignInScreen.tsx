@@ -4,12 +4,22 @@ import Button from "../../components/Button";
 import { colors } from '../../utils/colors';
 import Input from "../../components/Input";
 import Divider from "../../components/Divider";
+import { StackScreenProps } from "@react-navigation/stack";
+import { StackParamList } from "../../components/navigators/StackNavigator";
 
 UIManager.setLayoutAnimationEnabledExperimental &&
   UIManager.setLayoutAnimationEnabledExperimental(true);
 
-function SignInScreen() {
 
+interface SignInScreenNavigationProp
+  extends StackScreenProps<StackParamList, "SignInScreen"> {}
+
+  
+  function SignInScreen({ navigation }: SignInScreenNavigationProp) {
+    
+    function onSignIn(){
+      navigation.navigate("TabNavigator");
+    }
   const [isSignUp, setIsSignUp] = useState(false);
 
   function togleView() {
@@ -50,7 +60,7 @@ function SignInScreen() {
         </>                
         }
         </View>
-        {isSignUp ? <Button  title="Crear Cuenta" onPress={()=>{}}/> : <Button  title="Entrar" onPress={()=>{}}/>}
+        {isSignUp ? <Button  title="Crear Cuenta" onPress={()=>{}}/> : <Button  title="Entrar" onPress={onSignIn}/>}
         
         {isSignUp ? 
         <Pressable style={styles.back} onPress={togleView}>

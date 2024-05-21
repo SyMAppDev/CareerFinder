@@ -12,7 +12,7 @@ function App(): React.JSX.Element {
   return (
     <SafeAreaProvider>
       <View style={styles.backgroundStyle}>
-        <StatusBar backgroundColor={colors.white} barStyle="dark-content" />
+        <StatusBar backgroundColor={'transparent'} barStyle="dark-content" />
         <StackNavigator />
       </View>
     </SafeAreaProvider>
@@ -22,7 +22,7 @@ function App(): React.JSX.Element {
 const styles = StyleSheet.create({
   backgroundStyle: {
     flex: 1,
-    backgroundColor: colors.white,
+    // backgroundColor: colors.white,
   },
 });
 

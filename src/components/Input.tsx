@@ -17,7 +17,7 @@ interface InputProps {
   placeholder: string;
   style?: object;
   keyboardType?: KeyboardTypeOptions;
-  isError: boolean;
+  isError?: boolean;
 }
 
 function Input({

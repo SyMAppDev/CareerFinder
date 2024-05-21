@@ -3,6 +3,9 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from '@react-navigation/native';
 import SignInScreen from "../../screens/auth/SignInScreen";
 import { colors } from "../../utils/colors";
+import SearchScreen from "../../screens/app/SearchScreen";
+import TabNavigator from "./TabNavigator";
+
 
 export type StackParamList = {
   SignInScreen: undefined;
@@ -20,10 +23,11 @@ function StackNavigator() {
             borderWidth: 0,
           },
           headerTitle: "",
-          cardStyle: { backgroundColor: colors.white }, // Set the background color for all screens
+          // cardStyle: { backgroundColor: colors.white }, // Set the background color for all screens
         }}
       >
         <Stack.Screen name="SignInScreen" component={SignInScreen} options={{headerShown: false}}/>
+        <Stack.Screen name="TabNavigator" component={TabNavigator} options={{headerShown: false}}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
