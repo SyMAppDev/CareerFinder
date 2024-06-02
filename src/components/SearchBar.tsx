@@ -41,7 +41,7 @@ function SearchBar({
           onBlur={onBlur}
         />
         </View>
-        <TouchableOpacity onPress={onFilterPress}>
+        <TouchableOpacity activeOpacity={0.8} onPress={onFilterPress}>
             <View style={styles.filterContainer}>
                 <Image
                     source={require("../assets/images/filter.png")}
