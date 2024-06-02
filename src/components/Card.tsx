@@ -1,26 +1,25 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet, ImageSourcePropType } from 'react-native';
+import { View, Text, Image, StyleSheet, ImageSourcePropType, TouchableOpacity } from 'react-native';
+import { InstitutionType } from '../data/Institutions';
 
 interface CardProps {
-  title: string;
-  subtitle: string;
-  description: string;
-  imageSource: ImageSourcePropType;
+  item: InstitutionType;
+  onPress: (item: InstitutionType)=> void;
 }
 
-function Card({ title, subtitle, description, imageSource } : CardProps)  {
+function Card({ item, onPress } : CardProps)  {
   return (
-    <View style={styles.card}>
+    <TouchableOpacity activeOpacity={0.8} style={styles.card} onPress={()=>onPress(item)}>
       <Image 
-        source={imageSource} 
+        source={item.image[0]} 
         style={styles.image} 
       />
       <View style={styles.textContainer}>
-        <Text style={styles.title}>{title}</Text>
-        <Text style={styles.subtitle}>{subtitle}</Text>
-        <Text style={styles.description}>{description}</Text>
+        <Text style={styles.title}>{item.title}</Text>
+        <Text style={styles.subtitle}>{item.subtitle}</Text>
+        <Text style={styles.description}>{item.description}</Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 }
 
@@ -63,4 +62,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Card;
+export default React.memo(Card);

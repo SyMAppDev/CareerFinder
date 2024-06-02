@@ -7,18 +7,17 @@ import { colors } from "../utils/colors";
 interface ItemsListProps {
   title: string;
   items: InstitutionType[];
-  isSearch: boolean;
+  isSearch?: boolean;
+  onItemPress: (item: InstitutionType)=>void;
 }
 
-function ItemsList({ title, items, isSearch }: ItemsListProps) {
+function ItemsList({ title, items, isSearch, onItemPress }: ItemsListProps) {
   function renderInstitutionItem({ item, index }: { item: InstitutionType; index: number; }) {
     return (
       <Card
         key={index}
-        title={item.title}
-        imageSource={item?.image}
-        subtitle={item?.subtitle}
-        description={item?.description}
+       item={item}
+        onPress={onItemPress}
       />
     );
   }

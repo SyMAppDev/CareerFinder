@@ -4,12 +4,22 @@ import Header from "../../components/Header";
 import { colors } from "../../utils/colors";
 import { InstitutionType, Institutions } from "../../data/Institutions";
 import ItemsList from "../../components/ItemsList";
+import { StackScreenProps } from "@react-navigation/stack";
+import { StackParamList } from "../../components/navigators/StackNavigator";
 
 
-function SearchScreen(){
+interface TabNavigatorNavigationProp
+  extends StackScreenProps<StackParamList, "TabNavigator"> {}
+
+function SearchScreen({ navigation }: TabNavigatorNavigationProp){
 
     const [searchValue, setSearchValue] = useState("");
     const [searchedInstitutions, setSearchedInstitutions] = useState<InstitutionType[]>(Institutions);
+
+
+    function onCardPress(item : InstitutionType){
+        navigation.navigate("University", {item})
+      }
 
     function onSearch(value: string) {
         setSearchValue(value);
@@ -28,7 +38,7 @@ function SearchScreen(){
         <SafeAreaView style={styles.container}>
 
             <Header onSearch={onSearch} searchValue={searchValue}  />
-            <ItemsList title="Universidades" items={searchedInstitutions} isSearch={searchValue.length>0}/>
+            <ItemsList title="Universidades" items={searchedInstitutions} isSearch={searchValue.length>0} onItemPress={onCardPress}/>
 
         </SafeAreaView>
     )

@@ -5,6 +5,7 @@ import SignInScreen from "../../screens/auth/SignInScreen";
 import { colors } from "../../utils/colors";
 import SearchScreen from "../../screens/app/SearchScreen";
 import TabNavigator from "./TabNavigator";
+import University from "../../screens/app/University";
 
 
 export type StackParamList = {
@@ -28,6 +29,7 @@ function StackNavigator() {
       >
         <Stack.Screen name="SignInScreen" component={SignInScreen} options={{headerShown: false}}/>
         <Stack.Screen name="TabNavigator" component={TabNavigator} options={{headerShown: false}}/>
+        <Stack.Screen name="University" component={University} options={{headerShown: false}}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
