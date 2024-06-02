@@ -7,7 +7,7 @@ import { colors } from "../utils/colors";
 interface ItemsListProps {
   title: string;
   items: InstitutionType[];
-  isSearch: boolean;
+  isSearch?: boolean;
   onItemPress: (item: InstitutionType)=>void;
 }
 

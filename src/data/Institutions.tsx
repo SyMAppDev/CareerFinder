@@ -40,7 +40,7 @@ export const Institutions = [
     email: 'email@domain.com',
     tel: '1234-5678',
     address: 'calle siempreviva 123',
-    isFavorite: false
+    isFavorite: true
   },
   {
     id: 2,
@@ -68,7 +68,7 @@ export const Institutions = [
     email: 'email@domain.com',
     tel: '1234-5678',
     address: 'calle siempreviva 123',
-    isFavorite: false
+    isFavorite: true
   },
 
   {

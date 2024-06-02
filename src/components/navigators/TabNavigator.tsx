@@ -3,6 +3,7 @@ import React from "react";
 import { Image, StyleSheet } from "react-native";
 import { colors } from "../../utils/colors";
 import SearchScreen from "../../screens/app/SearchScreen";
+import Favorites from "../../screens/app/Favorites";
 
 
 const Tab = createBottomTabNavigator();
@@ -12,7 +13,7 @@ function TabNavigator() {
       <Tab.Navigator initialRouteName="Tab2" backBehavior="none" screenOptions={{ headerShown: false }}>
           <Tab.Screen
             name="Tab1"
-            component={Tab1Screen}
+            component={Favorites}
             options={{
               tabBarLabel: "Favoritos",
               tabBarLabelStyle: styles.tabFont,
