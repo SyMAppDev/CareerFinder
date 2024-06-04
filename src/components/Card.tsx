@@ -11,7 +11,7 @@ function Card({ item, onPress } : CardProps)  {
   return (
     <TouchableOpacity activeOpacity={0.8} style={styles.card} onPress={()=>onPress(item)}>
       <Image 
-        source={item.image[0]} 
+        source={item.image[0]}
         style={styles.image} 
       />
       <View style={styles.textContainer}>

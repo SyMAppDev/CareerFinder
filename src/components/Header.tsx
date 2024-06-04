@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 12,
+    marginBottom: 32,
   },
   hiddenTopRow: {
     height: 0,
@@ -51,4 +51,5 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: colors.black,
   },
+
 });

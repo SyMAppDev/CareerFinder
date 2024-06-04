@@ -64,10 +64,6 @@ function TabNavigator() {
     );
   }
   
-  function Tab1Screen() {
-    return null;
-  }
-  
   function Tab3Screen() {
   
     return null;

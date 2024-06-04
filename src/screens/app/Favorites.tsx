@@ -22,9 +22,7 @@ function Favorites({ navigation }: TabNavigatorNavigationProp){
     return (
 
         <SafeAreaView style={styles.container}>
-
             <ItemsList title="Favoritos" items={favoriteInstitutions} onItemPress={onCardPress}/>
-
         </SafeAreaView>
     )
 }

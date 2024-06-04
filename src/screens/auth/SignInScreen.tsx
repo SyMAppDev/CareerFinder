@@ -106,6 +106,7 @@ const styles = StyleSheet.create({
   Subtitle:{
     fontSize: 18,
     color: colors.black,
+    marginBottom:16
   },
   CreateAccountButton:{
     backgroundColor: colors.white,

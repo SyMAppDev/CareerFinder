@@ -28,13 +28,12 @@ function ItemsList({ title, items, isSearch, onItemPress }: ItemsListProps) {
         <Text style={styles.title}>
           {title}
         </Text>
-      
       <FlatList
         showsVerticalScrollIndicator={false}
         data={items}
         renderItem={renderInstitutionItem}
         keyExtractor={(item, index) => String(index)}
-      />
+        />
     </View>
   );
 }
@@ -49,6 +48,6 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     color: colors.black,
-    paddingBottom: 24, // Added paddingTop for spacing
+    paddingBottom: 16,
   },
 });
