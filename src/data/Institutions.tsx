@@ -25,7 +25,7 @@ export const Institutions = [
     days: 'Lunes a Viernes',
     email: 'email@domain.com',
     tel: '1234-5678',
-    address: 'calle siempreviva 123',
+    address: 'Libertad 893',
     isFavorite: false
   },
   {
@@ -39,7 +39,7 @@ export const Institutions = [
     days: 'Lunes a Viernes',
     email: 'email@domain.com',
     tel: '1234-5678',
-    address: 'calle siempreviva 123',
+    address: 'Libertad 893',
     isFavorite: true
   },
   {
@@ -53,7 +53,7 @@ export const Institutions = [
     days: 'Lunes a Viernes',
     email: 'email@domain.com',
     tel: '1234-5678',
-    address: 'calle siempreviva 123',
+    address: 'Libertad 893',
     isFavorite: false
   },
   {
@@ -67,7 +67,7 @@ export const Institutions = [
     days: 'Lunes a Viernes',
     email: 'email@domain.com',
     tel: '1234-5678',
-    address: 'calle siempreviva 123',
+    address: 'Libertad 893',
     isFavorite: true
   },
 
@@ -81,7 +81,7 @@ export const Institutions = [
     days: 'Lunes a Viernes',
     email: 'email@domain.com',
     tel: '1234-5678',
-    address: 'calle siempreviva 123',
+    address: 'Libertad 893, CABA',
     isFavorite: false
   },
 ];

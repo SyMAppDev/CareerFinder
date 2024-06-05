@@ -9,9 +9,10 @@ UIManager.setLayoutAnimationEnabledExperimental &&
 interface HeaderProps {
   onSearch: (str: string) => void;
   searchValue: string;
+  title: string;
 }
 
-function Header({ onSearch, searchValue }: HeaderProps) {
+function Header({ onSearch, searchValue, title}: HeaderProps) {
   const [showHeader, setShowHeader] = useState(true);
 
   const toggleHeader = () => {
@@ -22,7 +23,7 @@ function Header({ onSearch, searchValue }: HeaderProps) {
   return (
     <View style={styles.container}>
       <View style={showHeader ? styles.topRow : styles.hiddenTopRow}>
-        <Text style={styles.title}>Bienvenido!</Text>
+        <Text style={styles.title}>{title}</Text>
         <Image source={require("../assets/images/profile.png")} />
       </View>
       <SearchBar onFilterPress={() => { }} onSearch={onSearch} searchValue={searchValue} onFocus={toggleHeader} onBlur={toggleHeader} />

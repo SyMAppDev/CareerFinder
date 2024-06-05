@@ -7,18 +7,19 @@ interface CarouselProps {
   images: NodeRequire[];
 }
 
-function Carousel ({ images } : CarouselProps) {
+function Carousel({ images }: CarouselProps) {
   const [activeIndex, setActiveIndex] = useState(0);
   const flatListRef = useRef<FlatList>(null);
 
-  const onViewRef = useRef(({ viewableItems }: any) => {
+  const onViewRef = useRef(({ viewableItems }: { viewableItems: any[] }) => {
     if (viewableItems.length > 0) {
       setActiveIndex(viewableItems[0].index);
     }
   });
+
   const viewConfigRef = useRef({ viewAreaCoveragePercentThreshold: 50 });
 
-  const renderItem = ({ item }: { item: NodeRequire }) => (
+  const renderItem = ({ item, index }: { item: NodeRequire, index: number }) => (
     <View style={styles.imageContainer}>
       <Image source={item} style={styles.image} />
     </View>
@@ -57,12 +58,12 @@ const styles = StyleSheet.create({
     position: 'relative',
   },
   imageContainer: {
-    width: width,
+    width: width-40,
     justifyContent: 'center',
-    alignItems: 'center',    
-},
-image: {
-    width: width,
+    alignItems: 'center',
+  },
+  image: {
+    width: width-40,
     height: 300,
     resizeMode: 'cover',
   },

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Image,
   StyleSheet,
@@ -12,9 +12,10 @@ interface SearchBarProps {
   onFilterPress: () => void;
   onSearch: (str: string) => void;
   searchValue: string;
-  onFocus?: () => void;
-  onBlur?: () => void;
+  onFocus: () => void;
+  onBlur: () => void;
 }
+
 
 function SearchBar({
   onFilterPress,
@@ -23,10 +24,21 @@ function SearchBar({
   onFocus,
   onBlur,
 }: SearchBarProps) {
+
+  const [isFocused, setIsFocused] = useState(false);
+
+
+
+  function toggleFocus(){
+    setIsFocused(!isFocused)
+    isFocused ? onBlur() : onFocus()
+  }
+
+  
   return (
     <View style={styles.container}>
       <View style={styles.searchContainer}>
-        <View style={styles.iconContainer}>
+        <View style={isFocused ? styles.hiddenIcon : styles.iconContainer}>
           <Image
             source={require("../assets/images/search.png")}
             style={styles.searchIcon}
@@ -37,8 +49,8 @@ function SearchBar({
           style={styles.input}
           onChangeText={(text) => onSearch(text)}
           value={searchValue}
-          onFocus={onFocus}
-          onBlur={onBlur}
+          onFocus={toggleFocus}
+          onBlur={toggleFocus}
         />
         </View>
         <TouchableOpacity activeOpacity={0.8} onPress={onFilterPress}>
@@ -60,6 +72,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
+
   },
   searchContainer: {
     flexDirection: "row",
@@ -68,6 +81,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     flex: 1,
     maxWidth: "80%",
+    paddingHorizontal:8,
     shadowColor: "#000000",
     shadowOffset: {
       width: 0,
@@ -82,11 +96,16 @@ const styles = StyleSheet.create({
     height: 45,
     justifyContent: "center",
     alignItems: "center",
-    borderRadius: 8,
+    alignSelf:'center',
+  },
+  hiddenIcon:{
+    overflow:'hidden',
+    width:0
   },
   searchIcon: {
     width: 16,
     height: 18,
+    alignSelf:'center'
   },
   input: {
     flex: 1,
