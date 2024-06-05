@@ -8,6 +8,7 @@ import { StackScreenProps } from "@react-navigation/stack";
 import { StackParamList } from "../../components/navigators/StackNavigator";
 import ProductCard from "../../components/ProductCard"; // Ensure this path is correct
 import GenericModal from "../../components/GenericModal";
+import GenericModal from "../../components/GenericModal";
 
 interface TabNavigatorNavigationProp
   extends StackScreenProps<StackParamList, "TabNavigator"> {}
@@ -20,6 +21,7 @@ function SearchScreen({ navigation }: TabNavigatorNavigationProp){
     const [selectedComponent, setSelectedComponent] = useState<React.ReactNode | null>(null);
 
     function onCardPress(item : InstitutionType){
+      openModal(item)
       openModal(item)
         setModalVisible(true);
     }
@@ -43,6 +45,7 @@ function SearchScreen({ navigation }: TabNavigatorNavigationProp){
             
         )
     );
+      }
       }
 
     return (

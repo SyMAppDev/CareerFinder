@@ -3,8 +3,10 @@ import React, { useState } from "react";
 import { StackParamList } from "../../components/navigators/StackNavigator";
 import { InstitutionType, Institutions } from "../../data/Institutions";
 import { Modal, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Modal, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import ItemsList from "../../components/ItemsList";
 import ProductCard from "../../components/ProductCard";
+import GenericModal from "../../components/GenericModal";
 import GenericModal from "../../components/GenericModal";
 
 
@@ -17,6 +19,7 @@ function Favorites({ navigation }: TabNavigatorNavigationProp){
   const [favoriteInstitutions, setFavoriteInstitutions] = useState<InstitutionType[]>(Institutions.filter(x=>x.isFavorite));
 
   function onCardPress(item : InstitutionType){
+    openModal(item)
     openModal(item)
       setModalVisible(true);
   }
