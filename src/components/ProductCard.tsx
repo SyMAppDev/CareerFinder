@@ -25,25 +25,18 @@ function ProductCard({ item, onClose }: CardProps) {
   };
 
   const handleAddressPress = () => {
-    const address = `${item.address} ${item.city} ${item.state} ${item.zip}`;
+    const address = `${item.address}`;
     const encodedAddress = encodeURIComponent(address);
-    Platform.select({
-      ios: () => {
-        Linking.openURL(`http://maps.apple.com/?q=${encodedAddress}`);
-      },
-      android: () => {
-        Linking.openURL(`http://maps.google.com/maps?q=${encodedAddress}`);
-      },
-    })();
+    Platform.OS === 'ios' ? Linking.openURL(`http://maps.apple.com/?q=${encodedAddress}`) : Linking.openURL(`http://maps.google.com/maps?q=${encodedAddress}`)
   };
   return (
     <View style={styles.container}>
       <View style={styles.buttonsContainer}>
         <TouchableOpacity onPress={onClose}>
-          <Image source={require('../assets/images/close.png')} />
+        <Image style={styles.iconImage} source={require('../assets/images/close.png')} />
         </TouchableOpacity>
         <TouchableOpacity onPress={toggleFavorite}>
-          <Image
+          <Image style={styles.iconImage}
             source={isFavorite ? require('../assets/images/heart_active.png') : require('../assets/images/heart.png')}
           />
         </TouchableOpacity>
@@ -95,6 +88,10 @@ const styles = StyleSheet.create({
     width: "100%",
     paddingHorizontal: 20,
     marginTop: 20,
+  },
+  iconImage:{
+    width:24,
+    height:24
   },
   infoContainer: {
     padding: 20,
