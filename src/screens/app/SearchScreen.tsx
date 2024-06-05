@@ -31,7 +31,6 @@ function SearchScreen({ navigation }: TabNavigatorNavigationProp){
       setSelectedComponent(
           <ProductCard item={item} onClose={closeModal}/>
       );
-      setModalVisible(true);
   };
 
     function onSearch(value: string) {

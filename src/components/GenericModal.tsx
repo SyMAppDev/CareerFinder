@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Modal, StyleSheet, TouchableOpacity, View } from "react-native";
 import { InstitutionType } from "../data/Institutions";
+import { colors } from "../utils/colors";
 
 interface ModalProductProps {
     modalVisible: boolean,
@@ -46,7 +47,7 @@ const styles = StyleSheet.create({
     modalContent: {
         width: '90%',
         borderRadius: 16,
-        backgroundColor: 'white',
+        backgroundColor: colors.white,
         shadowColor: '#000',
         shadowOffset: { width: 0, height: 2 },
         shadowOpacity: 0.8,

@@ -18,7 +18,6 @@ function Favorites({ navigation }: TabNavigatorNavigationProp){
 
   function onCardPress(item : InstitutionType){
     openModal(item)
-    openModal(item)
       setModalVisible(true);
   }
   function closeModal() {
@@ -30,7 +29,6 @@ function Favorites({ navigation }: TabNavigatorNavigationProp){
     setSelectedComponent(
         <ProductCard item={item} onClose={closeModal}/>
     );
-    setModalVisible(true);
 };
   
 
