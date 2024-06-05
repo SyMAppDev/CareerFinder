@@ -3,10 +3,8 @@ import React, { useState } from "react";
 import { StackParamList } from "../../components/navigators/StackNavigator";
 import { InstitutionType, Institutions } from "../../data/Institutions";
 import { Modal, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { Modal, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import ItemsList from "../../components/ItemsList";
 import ProductCard from "../../components/ProductCard";
-import GenericModal from "../../components/GenericModal";
 import GenericModal from "../../components/GenericModal";
 
 
