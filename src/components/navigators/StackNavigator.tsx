@@ -3,13 +3,12 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from '@react-navigation/native';
 import SignInScreen from "../../screens/auth/SignInScreen";
 import TabNavigator from "./TabNavigator";
-import University from "../../screens/app/University";
+
 
 
 export type StackParamList = {
   SignInScreen: undefined;
   TabNavigator: undefined;
-  University: undefined;
 };
 
 const Stack = createStackNavigator<StackParamList>();
@@ -28,7 +27,6 @@ function StackNavigator() {
       >
         <Stack.Screen name="SignInScreen" component={SignInScreen} options={{headerShown: false}}/>
         <Stack.Screen name="TabNavigator" component={TabNavigator} options={{headerShown: false}}/>
-        <Stack.Screen name="University" component={University} options={{headerShown: false}}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
