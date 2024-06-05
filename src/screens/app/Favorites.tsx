@@ -2,10 +2,10 @@ import { StackScreenProps } from "@react-navigation/stack";
 import React, { useState } from "react";
 import { StackParamList } from "../../components/navigators/StackNavigator";
 import { InstitutionType, Institutions } from "../../data/Institutions";
-import { Modal, SafeAreaView, StyleSheet, TouchableOpacity, View } from "react-native";
+import { Modal, SafeAreaView, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import ItemsList from "../../components/ItemsList";
 import ProductCard from "../../components/ProductCard";
-import ModalProduct from "../../components/ModalProduct";
+import GenericModal from "../../components/GenericModal";
 
 
 interface TabNavigatorNavigationProp
@@ -13,25 +13,31 @@ interface TabNavigatorNavigationProp
 
 function Favorites({ navigation }: TabNavigatorNavigationProp){
   const [modalVisible, setModalVisible] = useState(false);
-  const [selectedItem, setSelectedItem] = useState<InstitutionType | null>(null);
+  const [selectedComponent, setSelectedComponent] = useState<React.ReactNode | null>(null);
   const [favoriteInstitutions, setFavoriteInstitutions] = useState<InstitutionType[]>(Institutions.filter(x=>x.isFavorite));
 
   function onCardPress(item : InstitutionType){
-      setSelectedItem(item);
+    openModal(item)
       setModalVisible(true);
   }
-
-  
   function closeModal() {
     setModalVisible(false);
-    setSelectedItem(null);
+    setSelectedComponent(null);
   }
+
+  function openModal (item: InstitutionType) {
+    setSelectedComponent(
+        <ProductCard item={item} onClose={closeModal}/>
+    );
+    setModalVisible(true);
+};
+  
 
     return (
 
         <SafeAreaView style={styles.container}>
             <ItemsList title="Favoritos" items={favoriteInstitutions} onItemPress={onCardPress}/>
-          <ModalProduct modalVisible={modalVisible} closeModal={closeModal} selectedItem={selectedItem}/>
+          <GenericModal modalVisible={modalVisible} closeModal={closeModal} componentToRender={selectedComponent}/>
         </SafeAreaView>
     )
 }

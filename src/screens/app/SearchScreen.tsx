@@ -7,7 +7,7 @@ import ItemsList from "../../components/ItemsList";
 import { StackScreenProps } from "@react-navigation/stack";
 import { StackParamList } from "../../components/navigators/StackNavigator";
 import ProductCard from "../../components/ProductCard"; // Ensure this path is correct
-import ModalProduct from "../../components/ModalProduct";
+import GenericModal from "../../components/GenericModal";
 
 interface TabNavigatorNavigationProp
   extends StackScreenProps<StackParamList, "TabNavigator"> {}
@@ -17,12 +17,22 @@ function SearchScreen({ navigation }: TabNavigatorNavigationProp){
     const [searchValue, setSearchValue] = useState("");
     const [searchedInstitutions, setSearchedInstitutions] = useState<InstitutionType[]>(Institutions);
     const [modalVisible, setModalVisible] = useState(false);
-    const [selectedItem, setSelectedItem] = useState<InstitutionType | null>(null);
+    const [selectedComponent, setSelectedComponent] = useState<React.ReactNode | null>(null);
 
     function onCardPress(item : InstitutionType){
-        setSelectedItem(item);
+      openModal(item)
         setModalVisible(true);
     }
+    function closeModal() {
+      setModalVisible(false);
+      setSelectedComponent(null);
+    }
+    function openModal (item: InstitutionType) {
+      setSelectedComponent(
+          <ProductCard item={item} onClose={closeModal}/>
+      );
+      setModalVisible(true);
+  };
 
     function onSearch(value: string) {
         setSearchValue(value);
@@ -35,17 +45,12 @@ function SearchScreen({ navigation }: TabNavigatorNavigationProp){
     );
       }
 
-    function closeModal() {
-      setModalVisible(false);
-      setSelectedItem(null);
-    }
-
     return (
         <SafeAreaView style={styles.container}>
             <Header onSearch={onSearch} searchValue={searchValue} title={"¡Bienvenido!"}  />
             <ItemsList title="Universidades" items={searchedInstitutions} isSearch={searchValue.length>0} onItemPress={onCardPress}/>
             
-           <ModalProduct closeModal={closeModal} modalVisible={modalVisible} selectedItem={selectedItem}/>
+           <GenericModal closeModal={closeModal} modalVisible={modalVisible} componentToRender={selectedComponent}/>
 
         </SafeAreaView>
     )
