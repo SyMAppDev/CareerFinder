@@ -5,9 +5,14 @@ import {
   TextInput,
   TouchableOpacity,
   View,
+  LayoutAnimation,
+  UIManager,
 } from "react-native";
 import { colors } from "../utils/colors";
 import DistanceSlider from "./DistanceSlider";
+
+UIManager.setLayoutAnimationEnabledExperimental &&
+  UIManager.setLayoutAnimationEnabledExperimental(true);
 
 interface SearchBarProps {
   onSearch: (str: string) => void;
@@ -31,6 +36,7 @@ function SearchBar({
 
 
   function onFilterPress() {
+    LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
     setIsFilterOpen(!isFilterOpen);
   }
 
@@ -145,6 +151,6 @@ const styles = StyleSheet.create({
     height: 29,
   },
   sliderRow: {
-    marginTop: 8,
+    marginTop: 16,
   },
 });

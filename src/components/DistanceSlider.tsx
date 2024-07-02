@@ -2,6 +2,7 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import Slider from '@react-native-community/slider';
+import { colors } from '../utils/colors';
 
 interface DistanceSliderProps {
     maxDistance: number;
@@ -34,7 +35,9 @@ const styles = StyleSheet.create({
     },
     label: {
         fontSize: 16,
+        fontWeight: '500',
         marginBottom: 8,
+        color: colors.black
     },
     slider: {
         width: '100%',        
