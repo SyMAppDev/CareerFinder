@@ -8,11 +8,13 @@ UIManager.setLayoutAnimationEnabledExperimental &&
 
 interface HeaderProps {
   onSearch: (str: string) => void;
+  onDistanceChange: (distance: number) => void;
   searchValue: string;
   title: string;
+  searchDistance: number;
 }
 
-function Header({ onSearch, searchValue, title}: HeaderProps) {
+function Header({ onSearch, onDistanceChange, searchValue, title, searchDistance}: HeaderProps) {
   const [showHeader, setShowHeader] = useState(true);
 
   const toggleHeader = () => {
@@ -26,7 +28,7 @@ function Header({ onSearch, searchValue, title}: HeaderProps) {
         <Text style={styles.title}>{title}</Text>
         <Image source={require("../assets/images/profile.png")} />
       </View>
-      <SearchBar onSearch={onSearch} searchValue={searchValue} onFocus={toggleHeader} onBlur={toggleHeader} />        
+      <SearchBar onSearch={onSearch} onDistanceChange={onDistanceChange} searchValue={searchValue} searchDistance={searchDistance} onFocus={toggleHeader} onBlur={toggleHeader} />        
     </View>
   );
 }

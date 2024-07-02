@@ -18,6 +18,12 @@ function SearchScreen({ navigation }: TabNavigatorNavigationProp){
     const [searchedInstitutions, setSearchedInstitutions] = useState<InstitutionType[]>(Institutions);
     const [modalVisible, setModalVisible] = useState(false);
     const [selectedComponent, setSelectedComponent] = useState<React.ReactNode | null>(null);
+    const [distanceFilter, setDistanceFilter] = useState(0);
+
+
+    function changeDistance(distance: number){
+      setDistanceFilter(distance)
+  }
 
     function onCardPress(item : InstitutionType){
       openModal(item)
@@ -47,7 +53,7 @@ function SearchScreen({ navigation }: TabNavigatorNavigationProp){
 
     return (
         <SafeAreaView style={styles.container}>
-            <Header onSearch={onSearch} searchValue={searchValue} title={"¡Bienvenido!"}  />
+            <Header onSearch={onSearch} onDistanceChange={changeDistance} searchValue={searchValue} searchDistance={distanceFilter} title={"¡Bienvenido!"}  />
             <ItemsList title="Universidades" items={searchedInstitutions} isSearch={searchValue.length>0} onItemPress={onCardPress}/>
             
            <GenericModal closeModal={closeModal} modalVisible={modalVisible} componentToRender={selectedComponent}/>

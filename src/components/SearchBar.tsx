@@ -11,20 +11,24 @@ import DistanceSlider from "./DistanceSlider";
 
 interface SearchBarProps {
   onSearch: (str: string) => void;
+  onDistanceChange: (distance: number) => void;
   searchValue: string;
+  searchDistance: number;
   onFocus: () => void;
   onBlur: () => void;
 }
 
 function SearchBar({
   onSearch,
+  onDistanceChange,
   searchValue,
+  searchDistance,
   onFocus,
   onBlur,
 }: SearchBarProps) {
   const [isFocused, setIsFocused] = useState(false);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
-  const [distanceFilter, setDistanceFilter] = useState(0);
+
 
   function onFilterPress() {
     setIsFilterOpen(!isFilterOpen);
@@ -35,9 +39,7 @@ function SearchBar({
     isFocused ? onBlur() : onFocus();
   }
 
-  function onSliderChange(distance: number){
-      setDistanceFilter(distance)
-  }
+
 
   return (
     <View style={styles.container}>
@@ -69,7 +71,7 @@ function SearchBar({
       </View>
       {isFilterOpen && (
         <View style={styles.sliderRow}>
-          <DistanceSlider currentDistance={distanceFilter} maxDistance={100} onDistanceChange={onSliderChange} />
+          <DistanceSlider currentDistance={searchDistance} maxDistance={100} onDistanceChange={onDistanceChange} />
         </View>
       )}
     </View>

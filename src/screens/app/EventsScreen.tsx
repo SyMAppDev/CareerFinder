@@ -18,6 +18,11 @@ function EventsScreen({ navigation }: TabNavigatorNavigationProp){
     const [searchedEvents, setSearchedEvents] = useState<EventType[]>(Events);
     const [modalVisible, setModalVisible] = useState(false);
     const [selectedComponent, setSelectedComponent] = useState<React.ReactNode | null>(null);
+    const [distanceFilter, setDistanceFilter] = useState(0);
+
+    function changeDistance(distance: number){
+        setDistanceFilter(distance)
+    }
 
     function onCardPress(item : EventType){
       openModal(item)
@@ -46,7 +51,7 @@ function EventsScreen({ navigation }: TabNavigatorNavigationProp){
 
     return (
         <SafeAreaView style={styles.container}>
-            <Header onSearch={onSearch} searchValue={searchValue} title={"¡Bienvenido!"}  />
+            <Header onSearch={onSearch} onDistanceChange={changeDistance} searchValue={searchValue} searchDistance={distanceFilter} title={"¡Bienvenido!"}  />
             <ItemsList title="Eventos" items={searchedEvents} isSearch={searchValue.length>0} onItemPress={onCardPress}/>
             
            <GenericModal closeModal={closeModal} modalVisible={modalVisible} componentToRender={selectedComponent}/>
