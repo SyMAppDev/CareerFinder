@@ -26,7 +26,7 @@ function Header({ onSearch, searchValue, title}: HeaderProps) {
         <Text style={styles.title}>{title}</Text>
         <Image source={require("../assets/images/profile.png")} />
       </View>
-      <SearchBar onFilterPress={() => { }} onSearch={onSearch} searchValue={searchValue} onFocus={toggleHeader} onBlur={toggleHeader} />
+      <SearchBar onSearch={onSearch} searchValue={searchValue} onFocus={toggleHeader} onBlur={toggleHeader} />        
     </View>
   );
 }

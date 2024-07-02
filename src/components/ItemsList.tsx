@@ -3,20 +3,21 @@ import { InstitutionType } from "../data/Institutions";
 import Card from "./Card";
 import { FlatList, StyleSheet, Text, View } from "react-native";
 import { colors } from "../utils/colors";
+import { EventType } from "../data/Events";
 
 interface ItemsListProps {
   title: string;
-  items: InstitutionType[];
+  items: (InstitutionType | EventType)[];
   isSearch?: boolean;
-  onItemPress: (item: InstitutionType)=>void;
+  onItemPress: (item: InstitutionType | EventType)=>void;
 }
 
 function ItemsList({ title, items, isSearch, onItemPress }: ItemsListProps) {
-  function renderInstitutionItem({ item, index }: { item: InstitutionType; index: number; }) {
+  function renderInstitutionItem({ item, index }: { item: InstitutionType | EventType; index: number; }) {
     return (
       <Card
         key={index}
-       item={item}
+        item={item}
         onPress={onItemPress}
       />
     );

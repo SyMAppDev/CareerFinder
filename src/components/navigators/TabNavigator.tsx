@@ -4,6 +4,7 @@ import { Image, StyleSheet } from "react-native";
 import { colors } from "../../utils/colors";
 import SearchScreen from "../../screens/app/SearchScreen";
 import Favorites from "../../screens/app/Favorites";
+import EventsScreen from "../../screens/app/EventsScreen";
 
 
 const Tab = createBottomTabNavigator();
@@ -45,7 +46,7 @@ function TabNavigator() {
         />
         <Tab.Screen
           name="Tab3"
-          component={Tab3Screen}
+          component={EventsScreen}
           options={{
             
             tabBarLabel: "Eventos",

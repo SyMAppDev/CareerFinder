@@ -1,13 +1,21 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { InstitutionType } from '../data/Institutions';
+import { EventType } from '../data/Events';
 
 interface CardProps {
-  item: InstitutionType;
-  onPress: (item: InstitutionType) => void;
+  item: InstitutionType | EventType;
+  onPress: (item: InstitutionType | EventType) => void;
 }
 
 function Card({ item, onPress }: CardProps) {
+  function isInstitutionType(item: InstitutionType | EventType): item is InstitutionType {
+    return (item as InstitutionType).subtitle !== undefined;
+  }
+  function isEventType(item: InstitutionType | EventType): item is EventType {
+    return (item as EventType).date !== undefined;
+  }
+
   return (
     <TouchableOpacity activeOpacity={0.8} style={styles.card} onPress={() => onPress(item)}>
       <Image 
@@ -16,8 +24,13 @@ function Card({ item, onPress }: CardProps) {
       />
       <View style={styles.textContainer}>
         <Text style={styles.title}>{item.title}</Text>
-        <Text style={styles.subtitle}>{item.subtitle}</Text>
+        {isInstitutionType(item) && (
+                    <Text style={styles.subtitle}>{item.subtitle}</Text>
+                )}
         <Text style={styles.description}>{item.description}</Text>
+        {isEventType(item) && (
+                    <Text style={styles.subtitle}>Fecha: {item.date}</Text>
+                )}
       </View>
     </TouchableOpacity>
   );
@@ -49,7 +62,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     color: '#333',
-  },
+  }, 
   subtitle: {
     fontSize: 14,
     color: '#666',
